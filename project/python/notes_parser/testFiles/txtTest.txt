@@ -1,0 +1,189 @@
+Fehr and Peers
+
+## TIA
+
+- typical topics:
+    - Vehicular delay during peak hours
+    - Parking supply and demand
+
+- study scenarios
+    - existing conditions to document present situation, existing + project
+    - cumulative, cumulative + project
+
+# Existing conditions
+
+- interested in data about AM and PM peak hours
+- collected data: number of turning movements at intersection, speed limits, special street uses, signal timings, parking data, gps travel times, collision data
+
+# intersection turning movement counts
+
+- traditional: video cameras at intersection to count
+- alternative approach: gps location data
+
+# intersection analysis
+
+- synchro/simtraffic software stack to analyze vehicles delay at intersection
+- synchro
+    - applies deterministic equations (same input = same output)
+- simtraffic
+    - microsimulation tool
+    - stochastic simulation (random behaviours assigned, not deterministic)
+    - usually used for closley-spaced intersections, complex geometry, highly congested areas
+- vissim
+    - benefits over simtraffic:
+        - different modes (pedestrians, bicycles, transit)
+        - unusual intersection configs
+        - complex signal timings
+
+# Trip Generation
+
+- commonly use ITE trip generation manual
+
+# Mode choice
+
+- approaches for estimating:
+    - US Census/ACS data
+    - local data (e.g. travel surveys, etc.)
+
+# Trip Distribution
+
+- understands peoples destinations and pairs their origins with the destination
+- common data sources:
+    - existing travel pattern data
+    - ZIP code data
+    - commute time data
+    - Big Data (cellphone location data)
+    - travel demand model
+
+# Trip assignment
+
+- once we know origin and dest, the road in which the travel takes place must be determined
+- project-specific considerations:
+    - quickest route is not always the route people take
+
+# Existing + project
+
+- more vehicles -> longer delay
+- shorten trips by providing a closer destination (new Target in Davis prevented trips to further cities)
+
+# Cumulative Forecasting Approaches
+
+- apply travel demand model based on current data and other published studies
+- use growth rate (both historic and published)
+- Cube, Transcad are common modeling software
+
+# Transportation Modeling
+
+- 2 types of models:
+    - Trip based model
+    - Activity based model
+
+# Activity based model
+
+- 4 step model data is often very aggregated and trips are calculated based on larger zones (e.g. downtown sac might have only 10-20 zones)
+- activity based model is basically a synthetic world that exists in a computer
+    - starts with a demographic model and a synthetic population and simulates how people behave in a delay
+    - gives finer detail and accuracy
+
+# model validation
+
+- once a model is run, the results must be validated (compare prediction with avaliable information)
+- types of validation:
+    - static: compare model traffic volume to actual traffic counts
+    - dynamic: make sure model isn't causing changes outside of scope
+
+# Limitations of traffic Forecasting
+
+- e-commerce
+- micromobility
+- telecommunicating
+- decreased transit usage (e.g. covid)
+- ridehailing (rise of Uber and Lyft)
+
+## Impacts and Mitigations
+
+# entitlement review
+
+- review projects and assess impact on local traffic systems (e.g. how will a local shopping center affect the traffic on the roadways and intersections)
+- identifies any deficiencies and then improvements to fix thoses deficiencies
+- deficiencies identified with respect to plans, policies, standards, etc.
+
+# CEQA (California Environmental Quality Act)
+
+- impacts identified in accordance with significant tresholds:
+    - Environmental impacts
+    - noise levels
+    - multi-modal conflicts
+    - conflicts with design standards
+    - other disruptions
+- If disruption -> mitigation measures are required
+
+# Bicycle/predestrian mitigation measures
+
+- implement planned improvement along project frontage or through project site
+- modify site plans to accomodate design standards
+- gap closure project (adding sidewalk, bike lane, etc. to accomodate other modes of travel)
+- reduce potential for collisions by redesigning high risk roadways and intersections
+- seperating modes (seperated bike lanes)
+
+# Transit mitigation measures
+
+- reduce delays to transit services:
+    - transit only lanes
+    - bus queue jumps
+    - traffic signal modifcations (e.g. transit pre-emption)
+        - can also be used by emergency vehicles
+- improvement transit access:
+    - constructing transit stations/stop
+    - improve bicycle/pedestrian facilies near transit stations/stops
+- increase transit capacity:
+    - introduce new services
+    - improve existing services (increase transit frequency, expand coverage both geographically and temporally)
+
+## VMT
+
+- people are willing to drive longer distances if the benefit of the trip increases
+- low VMT != low traffic congestion
+- denser urban developments = lower VMT rates
+    - not necessarily directly related
+
+# VMT metrics
+
+- total vmt: all vmt in a certain zone
+- project-generated vmt: all vmt generated by a single origin/destination
+    - ignores zone boundaries
+- VMT per capita: project generated vmt divided by number of people in the project area
+    - normalize population with vmt
+- project wffect on vmt: looks at what happens to a given area if you construct a project (effect on total vmt as a result of a project)
+
+# TDM as Mitigation
+
+- TDM+ tool incorporates various strategies to mitigate VMT
+- strategy examples:
+    - offers up more travel modes
+    - make parking more expensive
+
+# Safety
+
+- facilities should not just be safe/not dangerous, must evaluate based on design standards
+- take into account collisions, not accidents
+
+# Safety Mitigation
+
+- reduce kinetic energy between objects (collisions)
+    - reduce speed/weight of vehicles
+    - reduce speed differential between users
+- seperate users in space and/or time
+- provide consistent user expectations (make sure there are no surprises to make the usage of a roadway/intersection intuitive)
+
+# site plan recommendations
+
+- valuable to graphically illustrate travel challenges to highlight potential issues (overflowing capacity, large queue lines, etc.)
+- make recommendations based on expected issues
+
+
+
+
+
+
+
