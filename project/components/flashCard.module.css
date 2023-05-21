@@ -2,6 +2,8 @@
     width: 300px;
     height: 200px;
     margin-bottom: 20px;
+    margin-left: 6px;
+    margin-right: 2px;
     perspective: 1000px;
     position: relative;
     cursor: pointer;
@@ -11,6 +13,8 @@
   
   .flipped {
     transform: rotateY(180deg);
+    margin-left: 10px;
+    margin-right: 10px;
   }
   
   .front,
@@ -24,16 +28,17 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 1.5rem;
     box-sizing: border-box;
+    border-radius: 25px;
   }
   
   .front {
-    background-color: #ffffff;
+    background-color: #f15412;
   }
   
   .back {
-    background-color: #f5f5f5;
+    background-color: #34b3f1;
     transform: rotateY(180deg);
   }
   
@@ -42,5 +47,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+  }
+
+  .appContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contentContainer {
+    display: flex;
+    justify-content: center;
   }
   
