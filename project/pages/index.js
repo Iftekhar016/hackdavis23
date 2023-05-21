@@ -1,12 +1,19 @@
 import React from 'react';
 import FlashCard from '../components/flashCard';
 import styles from '../components/flashCard.module.css';
+import Table from '../components/table';
 
 const App = () => {
 
   let testObj = {
     "Question 1" : "Answer 1",
     "Question 2" : "Answer 2",
+    "Question 3" : "Answer 3",
+    "Question 4" : "Answer 4",
+    "Question 5" : "Answer 5",
+    "Question 6" : "Answer 6",
+    "Question 7" : "Answer 7",
+    "Question 8" : "Answer 8",
   };
 
   for (let key in testObj) {
@@ -23,6 +30,11 @@ const App = () => {
         <FlashCard key={question} question={question} answer={answer} />
       ))}
       </div>
+      <div>
+      <h1>Table Example</h1>
+      <Table />
+    </div>
+
     </div>
   );
 };
