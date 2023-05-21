@@ -1,6 +1,10 @@
 .table {
     width: 50%;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
+    border: 1px solid #FFA372;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .table th,
@@ -11,8 +15,8 @@
   }
   
   .table thead th {
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: #0F4C81;
+    color: #FFA372;
   }
   
   .table tbody tr:nth-child(even) {

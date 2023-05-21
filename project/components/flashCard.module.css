@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+.body{
+  background-color: #1B262C;
+  color: #ED6663;
+}
+
+
 .flashCard {
     width: 300px;
     height: 200px;
@@ -9,6 +17,7 @@
     cursor: pointer;
     transition: transform 0.6s;
     transform-style: preserve-3d;
+    background-color: #1B262C;
   }
   
   .flipped {
@@ -31,14 +40,17 @@
     padding: 1.5rem;
     box-sizing: border-box;
     border-radius: 25px;
+    border: 3px solid;
   }
   
   .front {
-    background-color: #f15412;
+    color: #ED6663;
+    border-color: #ED6663;
   }
   
   .back {
-    background-color: #34b3f1;
+    border-color: #65a8e2;
+    color: #65a8e2;
     transform: rotateY(180deg);
   }
   
@@ -58,5 +70,10 @@
   .contentContainer {
     display: flex;
     justify-content: center;
+    /* align-self: center; */
+  }
+
+  .tableHead{
+    text-align: center;
   }
   

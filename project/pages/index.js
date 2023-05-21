@@ -2,6 +2,7 @@ import React from 'react';
 import FlashCard from '../components/flashCard';
 import styles from '../components/flashCard.module.css';
 import Table from '../components/table';
+// import Button from '../components/Button';
 
 const App = () => {
 
@@ -23,19 +24,23 @@ const App = () => {
     }
   }
   return (
-    <div>
+    <div className={styles.body}>
       <h1>Flash Cards</h1>
       <div className={styles.conentContainer}>
-      <div className={styles.flashCardContainer}>
-      {Object.entries(testObj).map(([question, answer]) => (
-        <FlashCard key={question} question={question} answer={answer} />
-      ))}
+        <div className={styles.flashCardContainer}>
+        {Object.entries(testObj).map(([question, answer]) => (
+          <FlashCard key={question} question={question} answer={answer} />
+        ))}
+        </div>
       </div>
-      </div>
+
       <div>
-      <h1>Table Example</h1>
-      <Table />
-    </div>
+      </div>
+
+      <div>
+        <h1 className={styles.tableHead}>Table Example</h1>
+        <Table />
+      </div>
 
     </div>
   );
