@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FlashCard from '../components/flashCard';
 import styles from '../components/flashCard.module.css';
 import Table from '../components/table';
@@ -6,16 +6,32 @@ import Table from '../components/table';
 
 const App = () => {
 
+  const [apiData, setApiData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/');
+        const jsonData = await response.json();
+        console.log(jsonData);
+        setApiData(jsonData);
+      } catch (error) {
+        console.error('API request failed:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   let testObj = {
-    "Question 1" : "Answer 1",
-    "Question 2" : "Answer 2",
-    "Question 3" : "Answer 3",
-    "Question 4" : "Answer 4",
-    "Question 5" : "Answer 5",
-    "Question 6" : "Answer 6",
-    "Question 7" : "Answer 7",
-    "Question 8" : "Answer 8",
-  };
+    "What is the main topic of the given data?": "My friend who lacks social skills but excels in video games",
+    "What are some of the allergies mentioned in the data?" : "gluten, eggs, and milk.",
+    "how does the person excel in the game league of legends?" : "by unleashing his unique skills and potion, he reigns supreme in the game.",
+    "what is the person's aim in the field of chemistry?" : "to master the field and excel in lab experiments and formulas.",
+    "how does the person fare in social situations?" : "the data suggests that the person faces a challenge in social realms.",
+    "in what area does the person feel that he belongs?" : "in league of legends, where he excels and is at his rightful place.",
+    "what kind of reports does the person do frequently?" : "chemistry lab reports, which are a constant chore for the person.",
+  }
 
   for (let key in testObj) {
     if (testObj.hasOwnProperty(key)) {
