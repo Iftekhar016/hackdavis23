@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-/*I want you to generate flashcards of the following in json format {term:definition}
-cat: feline, dog:canine, raiyan:bengali */
-const APIKEY = /**paste in key here */
+import React, { useState, useEffect } from 'react';
+import FlashCard from './flashcard.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-async function fetchData(prompt, suffix) {
+async function fetchData(prompt) {
   try {
     const response = await fetch("https://api.openai.com/v1/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${APIKEY}`,
+        Authorization: "Bearer {APIKEY}",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         model: "text-davinci-003",
         prompt,
-        suffix,
-        max_tokens:100
+        max_tokens: 40
       }),
     });
     const data = await response.json();
@@ -26,34 +24,32 @@ async function fetchData(prompt, suffix) {
   }
 }
 
-const CaseInverter = () => {
-  const [inputText, setInputText] = useState('');
-  const [invertedText, setInvertedText] = useState('');
+const APIFetcher = () => {
   const [apiPrompt, setApiPrompt] = useState('');
   const [apiResponse, setApiResponse] = useState('');
+  const [apiMessages, setApiMessages] = useState([]);
+  const [dictionary, setDictionary] = useState({});
 
-  const handleInputChange = (event) => {
-    setInputText(event.target.value);
-  };
+  useEffect(() => {
+    console.log("API Messages:", apiMessages);
+  }, [apiMessages]);
 
-  const handleInvertClick = () => {
-    const invertedString = inputText
-      .split('')
-      .map((char) => {
-        if (char === char.toUpperCase()) {
-          return char.toLowerCase();
-        } else {
-          return char.toUpperCase();
-        }
-      })
-      .join('');
-
-    setInvertedText(invertedString);
-  };
+  useEffect(() => {
+    console.log("Dictionary:", dictionary);
+  }, [dictionary]);
 
   const handleAPIClick = async () => {
-    const response = await fetchData(apiPrompt, "what is your name");
+    const response = await fetchData(apiPrompt);
     setApiResponse(response);
+    setApiMessages([...apiMessages, response]);
+
+    try {
+      const parsedDictionary = JSON.parse(response);
+      setDictionary(parsedDictionary);
+    } catch (error) {
+      console.error("Error parsing API response:", error);
+      // Handle the error condition here
+    }
   };
 
   const handlePromptChange = (event) => {
@@ -62,25 +58,29 @@ const CaseInverter = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <h1 style={{ marginBottom: '1rem' }}>CASE INVERTER</h1>
-      <input
-        type="text"
-        value={inputText}
-        onChange={handleInputChange}
-        style={{ width: '300px', height: '40px', fontSize: '1rem', marginBottom: '1rem' }}
-      />
-      <button onClick={handleInvertClick}>Invert Case</button>
-      <p>{invertedText}</p>
+      <h1 style={{ marginBottom: '1rem' }}>CARDIFY PRO</h1>
       <input
         type="text"
         value={apiPrompt}
         onChange={handlePromptChange}
-        style={{ width: '300px', height: '40px', fontSize: '1rem', marginBottom: '1rem' }}
+        className="form-control mb-3"
+        style={{ width: '300px', fontSize: '1rem' }}
       />
-      <button onClick={handleAPIClick}>Test API</button>
+      <button onClick={handleAPIClick} className="btn btn-primary mb-3">Test API</button>
       {apiResponse && <p>{apiResponse}</p>}
+      {apiMessages.map((message, index) => (
+        <p key={index}>{message}</p>
+      ))}
+      <div>
+        <h2>Flashcards:</h2>
+        <div className="flashcard-container">
+          {Object.entries(dictionary).map(([term, definition]) => (
+            <FlashCard key={term} question={term} answer={definition} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default CaseInverter;
+export default APIFetcher;
